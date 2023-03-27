@@ -1,14 +1,16 @@
 import Header from "../Header/Header";
 import Catalog from "../Catalog/Catalog";
 import SideBar from "../SideBar/SideBar";
-import "./Home.css";
+import "./Podcasts.css";
 
-export default function Home() {
+export default function Home({
+    podcasts
+}) {
     return (
         <>
             <Header />
             <div className="home">
-                {/* <Catalog/> */}
+                <Catalog podcasts={podcasts}/>
                 <SideBar />
             </div>
         </>

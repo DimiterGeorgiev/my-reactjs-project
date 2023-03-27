@@ -1362,6 +1362,24 @@
                 "_createdOn": 1617194295474,
             }
         },
+        podcasts: {
+            "0677f0b8-cc7c-11ed-afa1-0242ac120002": {
+                "_ownerId": "6385dffe-cc7c-11ed-afa1-0242ac120002",
+                "title": "Live in the nature",
+                "category": "Life",
+                "imageUrl": "https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda officia architecto deserunt deleniti? Labore ipsum aspernatur magnam fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione atque, exercitationem quibusdam, reiciendis odio laboriosam?",
+                "date": "2 hour ago",
+            },
+            "c5ae3bbc-cc91-11ed-afa1-0242ac120002": {
+                "_ownerId": "d0ca1b24-cc91-11ed-afa1-0242ac120002",
+                "title": "Running and jogging",
+                "category": "Sport",
+                "imageUrl": "https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda officia architecto deserunt deleniti? Labore ipsum aspernatur magnam fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione atque, exercitationem quibusdam, reiciendis odio laboriosam?",
+                "date": "5 hour ago",
+            }
+        },
         comments: {
         
         }

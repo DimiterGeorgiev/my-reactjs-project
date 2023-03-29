@@ -1,6 +1,5 @@
 import "./Write.css"
 import { useState } from "react";
-import { useForm } from "../../hooks/useForm";
 
 export default function Write({
     onCreatePostSubmit,
@@ -74,14 +73,7 @@ export default function Write({
             type="text"
             name="description"
           />
-          <input
-            value={values.date}
-            onChange={onChangeHandler}
-            className="writeInput"
-            placeholder="date"
-            type="text"
-            name="date"
-          />
+          
         </div>
         <button className="writeSubmit" type="submit">
           Publish

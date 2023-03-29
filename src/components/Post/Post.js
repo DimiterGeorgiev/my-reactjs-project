@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import "./Post.css";
 
 export default function Post({
+    _id,
     title,
     imageUrl,
     category,
@@ -18,7 +20,12 @@ export default function Post({
                 <div className="postCats">
                     <span className="postCat">{category}</span>
                 </div>
-                <span className="postTitle">{title}</span>
+                <Link to={`/podcasts/${_id}`} className="link">
+                    <span className="postTitle">{title}</span>
+                </Link>
+
+                
+                
                 <hr />
                 <span className="postDate">{date}</span>
             </div>

@@ -2,9 +2,13 @@ import { podcastServiceFactory } from "./services/podcastService";
 //TODO: import as does not work.
 //import * as podcastService from './services/podcastService';
 
+//import * as authService from './services/authService';
+
+import { authServiceFactory } from "./services/authService";
+
 import Home from "./components/Home/Home";
 import Single from "./components/Single/Single";
-import Login from "./components/Login/Login";
+import { Login } from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Settings from "./components/Settings/Settings";
 import TopBar from "./components/TopBar/TopBar";
@@ -16,11 +20,14 @@ import { useEffect, useState } from "react";
 
 import { AuthContext } from './contexts/AuthContext';
 
+import { useContext } from "react";
+
 function App() {
-    const user = false;
+    
     const [podcasts, setPodcasts] = useState([]);
     const [auth, setAuth] = useState({})
     const podcastService = podcastServiceFactory();
+    const authService = authServiceFactory();
 
     //const navigate = useNavigate();
 
@@ -29,13 +36,11 @@ function App() {
             .then(result => {
                 setPodcasts(result)
             })
-    }, [podcastService]);
+    }, []);
 
-
-    
 
     const onCreatePostSubmit = async (data) => {
-        console.log(data);
+        //console.log(data);
 
         const newPost = await podcastService.create(data);
         setPodcasts(state => [...state, newPost]);
@@ -45,14 +50,38 @@ function App() {
     }
 
     const onLoginSubmit = async (e) => {
-        e.preventDefault();
-        console.log(Object.fromEntries(new FormData(e.target)));
+        try {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            //console.log(Object.fromEntries(new FormData(e.target)));
+            const result = await authService.login(data);
+            setAuth(result)
+            //console.log(result);
+            //TODO navigate does not work
+            //navigate('/podcasts');
+            
+        } catch (error) {
+            console.log('There is a problem');
+        }
+        
+    }
+
+    const context = {
+        onLoginSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken,
+    };
+
+    let user = false;
+    if (!!auth.accessToken){
+        user = true
     }
 
 
-
     return (
-        <AuthContext.Provider value={{onLoginSubmit}}>
+        <AuthContext.Provider value={context}>
             <Router>
                 <TopBar />
                     <Routes>
@@ -63,6 +92,7 @@ function App() {
                         <Route path="/write" element={user ? <Write onCreatePostSubmit={onCreatePostSubmit}/> : <Register />}/>
                         <Route path="/podcasts" element={<Podcasts podcasts={podcasts} />} />
                         <Route path="/podcasts/:postId" element={<Single />} />
+                        
                     </Routes>
             </Router>
         </AuthContext.Provider>

@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import "./TopBar.css"
 
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 export default function TopBar() {
-    const user = false;
+    const { isAuthenticated, userEmail } = useContext(AuthContext);
+
+
+    let user = false;
+    if (isAuthenticated){
+        user = true
+    }
+
+    
   return (
     <div className="top">
         <div className="topLeft">

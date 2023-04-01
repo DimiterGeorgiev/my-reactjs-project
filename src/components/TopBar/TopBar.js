@@ -29,7 +29,7 @@ export default function TopBar() {
           <li className="topListItem"><Link className="link" to="/">ABOUT</Link></li>
           <li className="topListItem"><Link className="link" to="/">CONTACT</Link></li>
           <li className="topListItem"><Link className="link" to="/write">WRITE</Link></li>
-          {user && <li className="topListItem">LOGOUT</li>}
+          {user && <li className="topListItem"> <Link className="link" to="/logout" >LOGOUT</Link></li>}
         </ul>
         </div>
         <div className="topRight">
@@ -41,6 +41,7 @@ export default function TopBar() {
               alt=""
             />
           </Link>
+          
         ) : (
           <ul className="topList">
             <li className="topListItem">
@@ -56,6 +57,7 @@ export default function TopBar() {
           </ul>
         )}
             <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+            <span className="topEmailIcon">{userEmail}</span>
         </div>
     </div>
   )

@@ -1,9 +1,9 @@
+import { usePostContext } from "../../contexts/PostContext"
 import Post from "../Post/Post"
 import "./Catalog.css"
 
-export default function Catalog({
-    podcasts
-}) {
+export default function Catalog() {
+    const { podcasts } = usePostContext()
   return (
     <div className="posts">
         {podcasts.map(x => 

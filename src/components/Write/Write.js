@@ -1,9 +1,9 @@
 import "./Write.css"
 import { useState } from "react";
+import { usePostContext } from "../../contexts/PostContext";
 
-export default function Write({
-    onCreatePostSubmit,
-}) {
+export default function Write() {
+    const {onCreatePostSubmit} = usePostContext();
     const [values, setValues] = useState({
         title: '',
         category: '',

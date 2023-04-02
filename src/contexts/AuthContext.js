@@ -60,10 +60,8 @@ export const AuthProvider = ({
         isAuthenticated: !!auth.accessToken,
     };
     return(
-        <>
-            <AuthContext.Provider value={contextValues}>
-                {children}
-            </AuthContext.Provider>
-        </>
+        <AuthContext.Provider value={contextValues}>
+            {children}
+        </AuthContext.Provider>
     );
 }

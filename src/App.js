@@ -1,4 +1,3 @@
-import { podcastServiceFactory } from "./services/podcastService";
 import Home from "./components/Home/Home";
 import Single from "./components/Single/Single";
 import { Login } from "./components/Login/Login";
@@ -8,41 +7,24 @@ import Settings from "./components/Settings/Settings";
 import TopBar from "./components/TopBar/TopBar";
 import Write from "./components/Write/Write";
 import Podcasts from "./components/Podcasts/Podcasts";
-import { BrowserRouter as Router, Routes, Route, Navigate, } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EditPost from "./components/EditPost/EditPost";
+import { PostProvider } from "./contexts/PostContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
-    const [podcasts, setPodcasts] = useState([]);
-    const podcastService = podcastServiceFactory();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        podcastService.getAll().then((result) => {
-            setPodcasts(result);
-        });
-    }, []);
-
-    const onCreatePostSubmit = async (data) => {
-        const newPost = await podcastService.create(data);
-        setPodcasts((state) => [...state, newPost]);
-        navigate("/podcasts");
-    };
-
-    const onPostEditSubmit = async (values) => {
-        const result = await podcastService.edit(values._id, values);
-        setPodcasts((state) =>
-            state.map((x) => (x._id === values._id ? result : x))
-        );
-
-        navigate(`/podcasts/${values._id}`);
-    };
+    const { isAuthenticated } = useContext(AuthContext);
 
     let user = false;
+    if (isAuthenticated) {
+        user = false;
+    }
 
     return (
-        <>
+        <AuthProvider>
+        <PostProvider>
             <TopBar />
             <Routes>
                 <Route exact path="/" element={<Home />} />
@@ -50,12 +32,13 @@ function App() {
                 <Route path="/login" element={user ? <Home /> : <Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/settings" element={user ? <Settings /> : <Register />}/>
-                <Route path="/write" element={<Write onCreatePostSubmit={onCreatePostSubmit} />}/>
-                <Route path="/podcasts" element={<Podcasts podcasts={podcasts} />}/>
+                <Route path="/write" element={<Write />}/>
+                <Route path="/podcasts" element={<Podcasts />}/>
                 <Route path="/podcasts/:postId" element={<Single />} />
-                <Route path="/podcasts/:postId/edit" element={<EditPost onPostEditSubmit={onPostEditSubmit} />}/>
+                <Route path="/podcasts/:postId/edit" element={<EditPost />}/>
             </Routes>
-        </>
+        </PostProvider>
+        </AuthProvider>
     );
 }
 

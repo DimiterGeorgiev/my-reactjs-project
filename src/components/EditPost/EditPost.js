@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { podcastServiceFactory } from "../../services/podcastService";
+import { usePostContext } from "../../contexts/PostContext";
 
-export default function EditPost(
-    {onPostEditSubmit}, 
-) {
+export default function EditPost() {
+    const {onPostEditSubmit} = usePostContext();
     const { postId } = useParams();
     const podcastService = useService(podcastServiceFactory);
     const {values, changeHandler, onSubmit, changeValues} = useForm({

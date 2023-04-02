@@ -1,14 +1,11 @@
 import "./SinglePost.css";
-
 import { useParams, useNavigate, Link } from "react-router-dom";
-
-//import * as podcastService from "../../services/podcastService";
 import { podcastServiceFactory } from "../../services/podcastService";
-
 import { AuthContext } from "../../contexts/AuthContext";
-
 import { useEffect, useState, useContext } from "react";
 import { useService } from "../../hooks/useService";
+import { usePostContext } from "../../contexts/PostContext";
+
 
 export default function SinglePost() {
     const { userId } = useContext(AuthContext);
@@ -17,6 +14,7 @@ export default function SinglePost() {
     //const podcastService = podcastServiceFactory();
     const podcastService = useService(podcastServiceFactory);
     const navigate = useNavigate();
+    const { deletePost } = usePostContext();
 
     useEffect(() => {
         podcastService.getOne(postId)
@@ -28,11 +26,17 @@ export default function SinglePost() {
     const isOwner = post._ownerId === userId;
 
     const onDeleteClick = async () => {
-        await podcastService.delete(post._id);
+        // eslint-disable-next-line no-restricted-globals
+        const result = confirm(`Are you sure you want to delete ${post.title}`);
+        
+        if (result) {
+            await podcastService.delete(post._id);
 
-        //TODO Delte from state
-
-        navigate('/podcasts');
+            deletePost(post._id);
+    
+            navigate('/podcasts');
+        }
+       
     };
 
     return (

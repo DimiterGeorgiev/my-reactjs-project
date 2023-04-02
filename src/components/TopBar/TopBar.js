@@ -12,7 +12,6 @@ export default function TopBar() {
     if (isAuthenticated){
         user = true
     }
-
     
   return (
     <div className="top">
@@ -28,7 +27,7 @@ export default function TopBar() {
           <li className="topListItem"><Link className="link" to="/podcasts">PODCASTS</Link></li>
           <li className="topListItem"><Link className="link" to="/">ABOUT</Link></li>
           <li className="topListItem"><Link className="link" to="/">CONTACT</Link></li>
-          <li className="topListItem"><Link className="link" to="/write">WRITE</Link></li>
+          {user && <li className="topListItem"><Link className="link" to="/write">WRITE</Link></li>}
           {user && <li className="topListItem"> <Link className="link" to="/logout" >LOGOUT</Link></li>}
         </ul>
         </div>

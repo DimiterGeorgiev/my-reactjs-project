@@ -7,7 +7,7 @@ import { useService } from "../../hooks/useService";
 import { podcastServiceFactory } from "../../services/podcastService";
 
 export default function EditPost(
-    onPostEditSubmit, 
+    {onPostEditSubmit}, 
 ) {
     const { postId } = useParams();
     const podcastService = useService(podcastServiceFactory);

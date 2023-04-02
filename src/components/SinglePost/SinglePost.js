@@ -11,7 +11,7 @@ import { useEffect, useState, useContext } from "react";
 import { useService } from "../../hooks/useService";
 
 export default function SinglePost() {
-    const { userId, userEmail } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const { postId } = useParams();
     const [ post, setPost ] = useState({});
     //const podcastService = podcastServiceFactory();
@@ -56,7 +56,7 @@ export default function SinglePost() {
                 <div className="singlePostInfo">
                     <span>
                         Author:
-                        <b className="singlePostAuthor">{userEmail}</b>
+                        <b className="singlePostAuthor">{}</b>
                     </span>
                     <span>23.03.2023</span>
                 </div>

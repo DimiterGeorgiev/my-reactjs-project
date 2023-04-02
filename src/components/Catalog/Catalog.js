@@ -13,11 +13,6 @@ export default function Catalog({
         {podcasts.length === 0 && (
             <h3>No Podcasts yet</h3>
         )}
-
-        {/* <Post/>
-        <Post/>
-        <Post/>
-        <Post/> */}
     </div>
   )
 }

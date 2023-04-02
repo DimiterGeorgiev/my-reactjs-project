@@ -8,7 +8,6 @@ export const Logout = () => {
     useEffect(() => {
         onLogout();
     }, [onLogout]);
-    
 
-    return <Navigate to="/" />
+    return <Navigate to="/podcasts" />
 }

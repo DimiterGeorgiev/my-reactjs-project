@@ -1,9 +1,13 @@
-import * as request from './requester';
+//import * as request from './requester';
 
-const baseUrl = 'http://localhost:3030/jsonstore/comments';
+import { requestFactory } from "./requester";
 
-export const getAll = async (gameId) => {
-    const query = encodeURIComponent(`gameId="${gameId}"`);
+const baseUrl = 'http://localhost:3030/data/comments';
+
+const request = requestFactory();
+
+export const getAll = async (postId) => {
+    const query = encodeURIComponent(`gameId="${postId}"`);
 
     const result = await request.get(`${baseUrl}?where=${query}`);
     const comments = Object.values(result);
@@ -11,8 +15,8 @@ export const getAll = async (gameId) => {
     return comments;
 };
 
-export const create = async (data) => {
-    const result = await request.post(baseUrl, data);
+export const create = async (postId, comment) => {
+    const result = await request.post(baseUrl, {postId, comment});
 
     return result;
 };

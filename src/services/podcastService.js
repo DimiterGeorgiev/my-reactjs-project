@@ -11,7 +11,6 @@ export const podcastServiceFactory = (token) => {
         const result = await request.get(baseUrl);
         const posts = Object.values(result);
         return posts;
-
     };
     
     const getOne = async (podcastId) => {
@@ -23,28 +22,24 @@ export const podcastServiceFactory = (token) => {
     const create = async (podcastData) => {
         const result = await request.post(baseUrl, podcastData)
     
-        console.log(result);
-    
         return result;
     };
     
-    const addComment = async (podcastId, data) => {
-        const result = await request.post(`${baseUrl}/${podcastId}/comments`, data);
-    
-        return result;
-    };
+    // const addComment = async (podcastId, data) => {
+    //     const result = await request.post(`${baseUrl}/${podcastId}/comments`, data);
+    //     return result;
+    // };
 
     const edit = (podcastId, data) => request.put(`${baseUrl}/${podcastId}`, data);
 
     const deletePodcast = (podcastId) => request.delete(`${baseUrl}/${podcastId}`);
-
 
     return {
         getAll,
         getOne,
         create,
         edit,
-        addComment,
+        //addComment,
         delete: deletePodcast,
     };
 }

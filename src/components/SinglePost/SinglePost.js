@@ -11,10 +11,15 @@ export default function SinglePost() {
     const { userId } = useContext(AuthContext);
     const { postId } = useParams();
     const [ post, setPost ] = useState({});
-    //const podcastService = podcastServiceFactory();
     const podcastService = useService(podcastServiceFactory);
     const navigate = useNavigate();
     const { deletePost } = usePostContext();
+    const { isAuthenticated, userEmail } = useContext(AuthContext);
+
+    let user = false;
+    if (isAuthenticated){
+        user = true
+    }
 
     useEffect(() => {
         podcastService.getOne(postId)
@@ -39,8 +44,6 @@ export default function SinglePost() {
        
     };
 
-    
-
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -64,8 +67,8 @@ export default function SinglePost() {
                         Author:
                         <b className="singlePostAuthor">{}</b>
                     </span>
-                    <button>Like</button>
-                    <span>5</span>
+                    {user && <button>Like</button>}
+                    <span >Likes: 5</span>
                     <span>23.03.2023</span>
                 </div>
                 <p className="singlePostDesc">

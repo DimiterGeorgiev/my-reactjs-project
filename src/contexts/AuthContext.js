@@ -3,8 +3,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { authServiceFactory } from "../services/authService";
 import { useNavigate } from 'react-router-dom';
 
-
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -15,7 +13,6 @@ export const AuthProvider = ({
 
     const navigate = useNavigate();
 
-
     const authService = authServiceFactory(auth.accessToken);
 
     const onLoginSubmit = async (e) => {
@@ -25,7 +22,6 @@ export const AuthProvider = ({
             const result = await authService.login(data);
             setAuth(result)
             
-            //TODO navigate does not work
             navigate('/podcasts');
             
         } catch (error) {
@@ -37,8 +33,7 @@ export const AuthProvider = ({
         try {
             const result = await authService.register(value);
             setAuth(result);
-
-            //TODO navigate does not work
+           
             navigate('/podcasts')
         } catch (error) {
             console.log('There is a problem');

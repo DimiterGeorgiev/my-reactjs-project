@@ -39,6 +39,8 @@ export default function SinglePost() {
        
     };
 
+    
+
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -62,6 +64,8 @@ export default function SinglePost() {
                         Author:
                         <b className="singlePostAuthor">{}</b>
                     </span>
+                    <button>Like</button>
+                    <span>5</span>
                     <span>23.03.2023</span>
                 </div>
                 <p className="singlePostDesc">

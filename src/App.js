@@ -11,16 +11,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EditPost from "./components/EditPost/EditPost";
 import { PostProvider } from "./contexts/PostContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "./contexts/AuthContext";
+
 
 function App() {
-    const { isAuthenticated } = useContext(AuthContext);
-
-    let user = false;
-    if (isAuthenticated) {
-        user = false;
-    }
 
     return (
         <AuthProvider>
@@ -28,10 +21,10 @@ function App() {
             <TopBar />
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/register" element={user ? <Home /> : <Register />}/>
-                <Route path="/login" element={user ? <Home /> : <Login />} />
+                <Route path="/register" element={<Register />}/>
+                <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
-                <Route path="/settings" element={user ? <Settings /> : <Register />}/>
+                <Route path="/settings" element={<Settings />}/>
                 <Route path="/write" element={<Write />}/>
                 <Route path="/podcasts" element={<Podcasts />}/>
                 <Route path="/podcasts/:postId" element={<Single />} />

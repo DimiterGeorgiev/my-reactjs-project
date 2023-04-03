@@ -7,7 +7,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 export default function TopBar() {
     const { isAuthenticated, userEmail } = useContext(AuthContext);
 
-
     let user = false;
     if (isAuthenticated){
         user = true

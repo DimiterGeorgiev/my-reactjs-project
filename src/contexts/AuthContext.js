@@ -13,7 +13,7 @@ export const AuthProvider = ({
     
     const [auth, setAuth] = useLocalStorage('auth', {})
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     const authService = authServiceFactory(auth.accessToken);
@@ -26,7 +26,7 @@ export const AuthProvider = ({
             setAuth(result)
             
             //TODO navigate does not work
-            //navigate('/podcasts');
+            navigate('/podcasts');
             
         } catch (error) {
             console.log('There is a problem');
@@ -39,7 +39,7 @@ export const AuthProvider = ({
             setAuth(result);
 
             //TODO navigate does not work
-            //navigate('/podcasts')
+            navigate('/podcasts')
         } catch (error) {
             console.log('There is a problem');
         }

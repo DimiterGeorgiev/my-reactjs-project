@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useEffect, useState, useContext } from "react";
 import { useService } from "../../hooks/useService";
 import { usePostContext } from "../../contexts/PostContext";
+import LikeButton from "../LikeButton/LikeButton";
 
 
 export default function SinglePost() {
@@ -67,8 +68,9 @@ export default function SinglePost() {
                         Author:
                         <b className="singlePostAuthor">{}</b>
                     </span>
-                    {user && <button>Like</button>}
-                    <span >Likes: 5</span>
+                    {/* {user && <button>Like</button>} */}
+                    {user && <LikeButton/>}
+                    {/* <span >Likes: 5</span> */}
                     <span>23.03.2023</span>
                 </div>
                 <p className="singlePostDesc">

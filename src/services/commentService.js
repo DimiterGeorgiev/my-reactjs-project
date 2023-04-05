@@ -1,5 +1,3 @@
-//import * as request from './requester';
-
 import { requestFactory } from "./requester";
 
 const baseUrl = 'http://localhost:3030/data/comments';
@@ -7,7 +5,7 @@ const baseUrl = 'http://localhost:3030/data/comments';
 const request = requestFactory();
 
 export const getAll = async (postId) => {
-    const query = encodeURIComponent(`gameId="${postId}"`);
+    const query = encodeURIComponent(`postId="${postId}"`);
 
     const result = await request.get(`${baseUrl}?where=${query}`);
     const comments = Object.values(result);

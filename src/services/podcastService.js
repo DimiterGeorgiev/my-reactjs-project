@@ -2,7 +2,7 @@ import { requestFactory } from './requester';
 
 const baseUrl = 'http://localhost:3030/data/podcasts';
 
-//const baseUrl = 'http://localhost:3030/jsonstore/podcasts';
+
 
 export const podcastServiceFactory = (token) => {
     const request = requestFactory(token);

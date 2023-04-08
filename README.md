@@ -1,3 +1,7 @@
+The stroy of your life...
+This is a page about your life story. Without registration, you can read posts, but you cannot like other people's stories or post your own stories. Just register and post your story. You can edit or delete your stories whenever you want.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

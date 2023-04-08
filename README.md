@@ -1,5 +1,5 @@
 The stroy of your life...
-This is a page about your life story. Without registration, you can read posts, but you cannot like other people's stories or post your own stories. Just register and post your story. You can edit or delete your stories whenever you want.
+This is a page about your life story. Without registration, you can read posts, but you cannot like other people's stories or post your own stories. Just register and write your story and post it. You can edit or delete your stories whenever you want.
 
 
 # Getting Started with Create React App

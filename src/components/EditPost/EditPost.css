@@ -57,12 +57,12 @@
     font-size: 20px;
   }
   
-  .writeSubmit {
+  .editSubmit {
     position: absolute;
     top: 20px;
     right: 50px;
     color: white;
-    background-color: teal;
+    background-color: rgb(214, 195, 22);
     padding: 10px;
     border: none;
     border-radius: 10px;

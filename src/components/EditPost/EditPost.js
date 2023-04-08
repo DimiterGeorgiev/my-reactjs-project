@@ -81,7 +81,7 @@ export default function EditPost() {
                         onChange={changeHandler}
                     />
                 </div>
-                <button className="writeSubmit" type="submit">
+                <button className="editSubmit" type="submit">
                     Edit
                 </button>
             </form>

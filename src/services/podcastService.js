@@ -30,6 +30,11 @@ export const podcastServiceFactory = (token) => {
     //     return result;
     // };
 
+    const addLike = async (podcastId, data) => {
+        const result = await request.post(`${baseUrl}/${podcastId}/likes`, data)
+        return result;
+    }
+
     const edit = (podcastId, data) => request.put(`${baseUrl}/${podcastId}`, data);
 
     const deletePodcast = (podcastId) => request.delete(`${baseUrl}/${podcastId}`);
@@ -40,6 +45,7 @@ export const podcastServiceFactory = (token) => {
         create,
         edit,
         //addComment,
+        addLike,
         delete: deletePodcast,
     };
 }

@@ -1,6 +1,6 @@
 import "./LikeButton.css";
 import React, { useState } from "react";
-function LikeButton() {
+function LikeButton({onLikeClick}) {
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
     return (

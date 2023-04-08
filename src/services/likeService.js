@@ -10,12 +10,12 @@ export const getAll = async (postId) => {
 
     ///data/likes?distinct=_ownerId&count
 
-    // const query = encodeURIComponent(`postId="${postId}"`);
+    const query = encodeURIComponent(`postId="${postId}"`);
 
-    // const result = await request.get(`${baseUrl}?where=${query}`);
-    // const comments = Object.values(result);
+    const result = await request.get(`${baseUrl}?where=${query}`);
+    const likes = Object.values(result);
 
-    // return comments;
+    return likes;
 
 } 
 

@@ -15,7 +15,8 @@ export default function SinglePost() {
     const podcastService = useService(podcastServiceFactory);
     const navigate = useNavigate();
     const { deletePost } = usePostContext();
-    const { isAuthenticated, userEmail } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext); 
+    // const { isAuthenticated, userEmail } = useContext(AuthContext); 
 
     let user = false;
     if (isAuthenticated){
@@ -45,6 +46,7 @@ export default function SinglePost() {
        
     };
 
+   
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -58,20 +60,18 @@ export default function SinglePost() {
                     {isOwner && (
                         <div className="singlePostEdit">
                             <Link to={`/podcasts/${post._id}/edit`} className="link green"><i className="singlePostIcon fa-regular fa-pen-to-square green"></i>Edit</Link>
-                            <i className="singlePostIcon fa-regular fa-trash-can red" onClick={onDeleteClick} ></i>
+                            <i className="singlePostIcon fa-regular fa-trash-can red" onClick={onDeleteClick} >Delete</i>
                         </div>
                     )}
                     
                 </h1>
                 <div className="singlePostInfo">
                     <span>
-                        Author:
+                        Author: Dimitar
                         <b className="singlePostAuthor">{}</b>
                     </span>
-                    {/* {user && <button>Like</button>} */}
                     {user && <LikeButton/>}
-                    {/* <span >Likes: 5</span> */}
-                    <span>23.03.2023</span>
+                    <span>{Date(Date.parse(post._createdOn))}</span>
                 </div>
                 <p className="singlePostDesc">
                     {post.description}
